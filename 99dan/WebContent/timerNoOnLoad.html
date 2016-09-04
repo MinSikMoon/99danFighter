@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>timer 만들기</title>
+<!-- jquery import -->
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+
+	
+		//1. timer
+		var timer = function(second){
+						
+			var interval = setInterval(function(){
+							
+				second = second<10?	"0"+second:second;
+				
+				$('#second').text(second);
+				
+				--second;
+				if(second < 0){
+					second = 0;
+					clearInterval(interval);
+				}
+			}, 1000); //1초마다 새로 시작된다.
+		}	
+		
+		timer(30);
+
+	
+</script>
+</head>
+<!-- =============================바디=============================== -->
+<body>
+
+	<span id = 'second'></span>
+</body>
+</html>

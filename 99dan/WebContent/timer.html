@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>timer 만들기</title>
+<!-- jquery import -->
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script>
+
+	$(function(){
+		//1. timer
+		var timer = function(duration){
+			var hour,miniute,second;
+			var totalSeconds = duration*3600;
+			
+			var interval = setInterval(function(){
+							
+				hour = parseInt(totalSeconds/3600, 10);
+				minute = parseInt(totalSeconds/60%60, 10);
+				second = parseInt(totalSeconds%60, 10);
+				
+				hour = hour<10? "0"+hour:hour;
+				minute = minute<10? "0"+minute:minute;
+				second = second<10?	"0"+second:second;
+				
+				$('#hour').text(hour);
+				$('#minute').text(minute);
+				$('#second').text(second);
+				
+				--totalSeconds;
+				if(totalSeconds < 0){
+					totalSeconds = 0;
+					clearInterval(interval);
+				}
+			}, 1000); //1초마다 새로 시작된다.
+		}	
+		
+		timer(24);
+	});
+	
+	
+</script>
+</head>
+<!-- =============================바디=============================== -->
+<body>
+
+	<span id = 'hour'></span>:<span id = 'minute'></span>:<span id = 'second'></span>
+</body>
+</html>
